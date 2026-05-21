@@ -30,6 +30,7 @@ Testing/
 *.gcov
 
 # Python helper script caches/environments
+.cache/
 .venv/
 venv/
 __pycache__/
