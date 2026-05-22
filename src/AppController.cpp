@@ -18,13 +18,28 @@ using namespace std;
 using namespace std::chrono;
 
 namespace {
-const string kStudentsPath = "../data/students.csv";
-const string kStatsPath = "../data/students_stats.csv";
-const string kAttendancePath = "../data/attendance.csv";
-const string kDrawHistoryPath = "../data/draw_history.csv";
-const string kSettingsPath = "../data/settings.csv";
-const string kExportPath = "../data/students_export.csv";
-const string kBackupPath = "../data/backup";
+bool directoryExists(const string& path) {
+    struct stat info;
+    return stat(path.c_str(), &info) == 0 && (info.st_mode & S_IFDIR);
+}
+
+string dataPath(const string& filename) {
+    if (directoryExists("data")) return "data/" + filename;
+    return "../data/" + filename;
+}
+
+string backupPath() {
+    if (directoryExists("data")) return "data/backup";
+    return "../data/backup";
+}
+
+const string kStudentsPath = dataPath("students.csv");
+const string kStatsPath = dataPath("students_stats.csv");
+const string kAttendancePath = dataPath("attendance.csv");
+const string kDrawHistoryPath = dataPath("draw_history.csv");
+const string kSettingsPath = dataPath("settings.csv");
+const string kExportPath = dataPath("students_export.csv");
+const string kBackupPath = backupPath();
 
 bool ensureDirectory(const string& path) {
     struct stat info;

@@ -1,5 +1,6 @@
 # Build directories
 build/
+build-codeblocks/
 cmake-build-*/
 out/
 
@@ -39,8 +40,15 @@ __pycache__/
 # Editor and IDE files
 .vscode/
 .idea/
+*.cbp
 *.swp
 *.swo
+
+# Generated reports
+report.pdf
+
+# Runtime backups
+data/backup/
 
 # macOS
 .DS_Store
@@ -49,3 +57,5 @@ __pycache__/
 *.log
 *.tmp
 *.bak
+
+课程设计报告.md
